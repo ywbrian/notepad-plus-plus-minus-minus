@@ -25,8 +25,13 @@ int main() {
     STARTUPINFOW si;
     PROCESS_INFORMATION pi;
 
+    if (!launchNotepad(&si, &pi)) {
+        std::cerr << "Failed to launch Notepad.\n";
+        return EXIT_FAILURE;
+    }
+
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
